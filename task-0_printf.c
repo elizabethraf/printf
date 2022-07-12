@@ -9,36 +9,35 @@
 
 int _printf(const char *format, ...)
 {
-	va_list argu;
 	char *str;
-	char c, dlr;
+ 	char c;
 	const char *ap;
 
+	va_list argu;
 	va_start(argu, format);
 	for (ap = format; *ap != '\0'; ap++)
 	{
-		while (*ap != '%')
+		if (*ap == '%')
 		{
-			putchar(*ap);
 			ap++;
+			switch (*ap) {
+				case 's':              /* string */
+					str = va_arg(argu, char *);
+					puts(str);
+					ap++;
+				   break;
+				case '%':              /* dolar */
+				   putchar('%');
+					ap++;
+				   break;
+				case 'c':
+				   c = va_arg(argu, int);
+				   putchar(c);
+					ap++;
+				   break;
+			}
 		}
-		ap++;
-
-		switch (*ap++) {
-			case 's':              /* string */
-				str = va_arg(argu, char *);
-				while (*str !=  '\0')
-					putchar(*str++);
-			   break;
-			case '%':              /* int */
-			   dlr = va_arg(argu, int);
-			   putchar(dlr);
-			   break;
-			case 'c':
-			   c = (char) va_arg(argu, int);
-			   putchar(c);
-			   break;
-		}
+		putchar(*ap);
 	}
 
 	va_end(argu);
