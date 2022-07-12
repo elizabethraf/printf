@@ -3,38 +3,40 @@
 /**
 * _printf - check code
 * @format: producing format
-* Use printf to print
-* Return number of character
+* _printf:use printf to print
+* Return: number NULL
 **/
-
 int _printf(const char *format, ...)
 {
 	char *str;
- 	char c;
+	char c;
 	const char *ap;
 
 	va_list argu;
+
 	va_start(argu, format);
+
 	for (ap = format; *ap != '\0'; ap++)
 	{
 		if (*ap == '%')
 		{
 			ap++;
-			switch (*ap) {
+			switch (*ap)
+			{
 				case 's':              /* string */
-					str = va_arg(argu, char *);
+				str = va_arg(argu, char *);
 					puts(str);
 					ap++;
-				   break;
-				case '%':              /* dolar */
-				   putchar('%');
+					break;
+					case '%':              /* dolar */
+					putchar('%');
 					ap++;
-				   break;
+					break;
 				case 'c':
-				   c = va_arg(argu, int);
-				   putchar(c);
+				c = va_arg(argu, int);
+					putchar(c);
 					ap++;
-				   break;
+					break;
 			}
 		}
 		putchar(*ap);
