@@ -17,6 +17,13 @@ int _printf(const char *format, ...)
 	va_start(argu, format);
 	for (ap = format; *ap != '\0'; ap++)
 	{
+		while (*ap != '%')
+		{
+			putchar(*ap);
+			ap++;
+		}
+		ap++;
+
 		switch (*ap++) {
 			case 's':              /* string */
 				str = va_arg(argu, char *);
