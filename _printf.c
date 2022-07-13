@@ -41,9 +41,28 @@ int _printf(const char *format, ...)
 		if (*ap == '%')
 		{
 			ap++;
+			+;
+			switch (*ap)
+			{
+				case 's':              /* string */
+				str = va_arg(argu, char *);
+					puts(str);
+					ap++;
+					break;
+					case '%':              /* dolar */
+					putchar('%');
+					ap++;
+					break;
+				case 'c':
+				c = va_arg(argu, int);
+					putchar(c);
+					ap++;
+					break;
+			}
+		}
+		putchar(*ap);
 	*ap = arg_parse(format, argu_list, format_list);
 	va_end(argu_list)
 		return ('ap');
 		}
-	}
 }
