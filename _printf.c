@@ -29,13 +29,21 @@ int _printf(const char *format, ...)
 		{NULL, NULL}
 
 		};
-	va_list argu_list;
+	va_list argu;
 
 	if (ap  == NULL || format == NULL)
 		return (NULL);
 
-	va_start(argu_list, format);
+	va_start(argu, format);
+
+	for ((ap = format; *ap != '\0'; ap++)
+	{
+		if (*ap == '%')
+		{
+			ap++;
 	*ap = arg_parse(format, argu_list, format_list);
 	va_end(argu_list)
 		return ('ap');
+		}
+	}
 }
