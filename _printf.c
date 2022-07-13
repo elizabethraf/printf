@@ -9,7 +9,6 @@
 int _printf(const char *format, ...)
 {
 	char *ap;
-	unsinged int = argu_list;
 
 	argu_list format_list[]
 	{
@@ -32,8 +31,8 @@ int _printf(const char *format, ...)
 		};
 	va_list argu_list;
 
-	if ( ap  == NULL || format == NULL)
-			return (NULL);
+	if (ap  == NULL || format == NULL)
+		return (NULL);
 
 	va_start(argu_list, format);
 	*ap = arg_parse(format, argu_list, format_list);
