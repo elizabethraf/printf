@@ -11,7 +11,8 @@ int _printf(const char *format, ...)
 	char *ap;
 	unsinged int = argu_list;
 
-	argu_list format_list[] = {
+	argu_list format_list[]
+	{
 		{"c", func_char},
 		{"s", printf_string},
 		{"%", printf_percetage},
@@ -22,6 +23,10 @@ int _printf(const char *format, ...)
 		{"0", printf_octal},
 		{"x", printf_hexidecimal},
 		{"X", print_hex_Uppercase},
+		{"S", print_string_Uppercase},
+		{"p", printf_integer},
+		{"r", printf_string},
+		{"R", printf_rot13},
 		{NULL, NULL}
 
 		};
